@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5CCF1DA-75A2-4492-8826-D883C40FD661}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DotaLass</RootNamespace>
+    <AssemblyName>DotaLass</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Windows\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\Dictionaries\CustomizedComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dictionaries\CustomizedScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="FieldManagement\FieldGrid.cs" />
+    <Compile Include="API\FieldGenerators.cs" />
+    <Compile Include="API\FileManagement.cs" />
+    <Compile Include="API\HeroIcons.cs" />
+    <Compile Include="API\OpenDotaAPI.cs" />
+    <Compile Include="API\Outputs\PlayerData.cs" />
+    <Compile Include="API\Outputs\RecentMatch.cs" />
+    <Compile Include="API\PlayerDisplay.cs" />
+    <Compile Include="API\RequestHandler.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FieldManagement\FieldGenerators\FieldBase.cs" />
+    <Compile Include="FieldManagement\FieldGenerators\Fields\FloatField.cs" />
+    <Compile Include="FieldManagement\FieldGenerators\Fields\HeroesPlayedField.cs" />
+    <Compile Include="FieldManagement\FieldGenerators\Fields\StringField.cs" />
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\dotabuff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\opendota.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\HeroIcons\Loss\001.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\002.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\003.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\004.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\005.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\006.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\007.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\008.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\009.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\010.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\011.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\012.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\013.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\014.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\015.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\016.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\017.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\018.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\019.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\020.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\021.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\022.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\023.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\024.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\025.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\026.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\027.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\028.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\029.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\030.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\031.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\032.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\033.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\034.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\035.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\036.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\037.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\038.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\039.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\040.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\041.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\042.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\043.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\044.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\045.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\046.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\047.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\048.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\049.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\050.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\051.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\052.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\053.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\054.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\055.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\056.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\057.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\058.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\059.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\060.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\061.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\062.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\063.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\064.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\065.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\066.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\067.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\068.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\069.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\070.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\071.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\072.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\073.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\074.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\075.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\076.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\077.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\078.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\079.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\080.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\081.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\082.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\083.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\084.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\085.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\086.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\087.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\088.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\089.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\090.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\091.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\092.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\093.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\094.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\095.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\096.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\097.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\098.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\099.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\100.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\101.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\102.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\103.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\104.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\105.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\106.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\107.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\108.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\109.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\110.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\111.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\112.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\113.png" />
+    <Resource Include="Resources\Images\HeroIcons\Loss\114.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\001.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\002.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\003.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\004.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\005.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\006.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\007.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\008.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\009.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\010.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\011.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\012.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\013.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\014.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\015.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\016.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\017.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\018.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\019.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\020.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\021.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\022.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\023.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\024.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\025.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\026.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\027.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\028.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\029.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\030.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\031.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\032.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\033.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\034.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\035.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\036.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\037.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\038.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\039.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\040.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\041.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\042.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\043.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\044.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\045.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\046.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\047.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\048.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\049.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\050.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\051.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\052.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\053.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\054.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\055.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\056.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\057.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\058.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\059.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\060.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\061.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\062.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\063.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\064.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\065.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\066.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\067.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\068.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\069.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\070.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\071.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\072.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\073.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\074.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\075.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\076.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\077.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\078.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\079.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\080.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\081.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\082.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\083.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\084.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\085.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\086.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\087.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\088.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\089.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\090.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\091.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\092.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\093.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\094.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\095.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\096.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\097.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\098.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\099.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\100.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\101.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\102.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\103.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\104.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\105.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\106.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\107.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\108.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\109.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\110.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\111.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\112.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\113.png" />
+    <Resource Include="Resources\Images\HeroIcons\Win\114.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\HeroIcons\Empty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
