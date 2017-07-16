@@ -43,8 +43,8 @@ namespace DotaLass.FieldManagement
             switch (key)
             {
                 case nameof(PlayerDisplay.DisplayData.ID): return new FieldInfo(visible, new ProfileLinkField(Window));
-                case nameof(PlayerDisplay.DisplayData.SoloMMR): return new FieldInfo(visible, new StringField(Window, key, "Solo MMR", 150));
-                case nameof(PlayerDisplay.DisplayData.EstimateMMR): return new FieldInfo(visible, new StringField(Window, key, "Estimate MMR", 150));
+                case nameof(PlayerDisplay.DisplayData.SoloMMR): return new FieldInfo(visible, new StringField(Window, key, "Solo MMR", 120));
+                case nameof(PlayerDisplay.DisplayData.EstimateMMR): return new FieldInfo(visible, new StringField(Window, key, "Estimate MMR", 120));
                 case nameof(PlayerDisplay.DisplayData.Winrate): return new FieldInfo(visible, new FloatField(Window, key, "Winrate", 100, "0.#%"));
                 case nameof(PlayerDisplay.DisplayData.AverageKills): return new FieldInfo(visible, new FloatField(Window, key, "K", 50));
                 case nameof(PlayerDisplay.DisplayData.AverageDeaths): return new FieldInfo(visible, new FloatField(Window, key, "D", 50));

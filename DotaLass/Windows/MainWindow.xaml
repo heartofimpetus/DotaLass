@@ -35,17 +35,17 @@
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Height="25" VerticalAlignment="Top" Margin="5" DockPanel.Dock="Top">
                 <Button x:Name="BtnClose" Width="23"  Click="BtnClose_Click">
                     <Button.Content>
-                        <fa:ImageAwesome Icon="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="LightGray" Margin="2" />
+                        <fa:ImageAwesome Icon="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" />
                     </Button.Content>
                 </Button>
                 <Button x:Name="BtnRefresh" Width="23" Click="BtnRefresh_Click" RenderTransformOrigin="0.5,0.5">
                     <Button.Content>
-                        <fa:ImageAwesome x:Name="RefreshSpinner" Spin="False" SpinDuration="3" Icon="CircleOutlineNotch" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="LightGray" Margin="2" />
+                        <fa:ImageAwesome x:Name="RefreshSpinner" Spin="False" SpinDuration="3" Icon="CircleOutlineNotch" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" />
                     </Button.Content>
                 </Button>
                 <Button x:Name="BtnSettings" Width="23" Click="BtnSettings_Click">
                     <Button.Content>
-                        <fa:ImageAwesome Icon="Gear" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="LightGray" Margin="2" />
+                        <fa:ImageAwesome Icon="Gear" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" />
                     </Button.Content>
                 </Button>
             </StackPanel>

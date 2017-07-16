@@ -87,7 +87,10 @@ namespace DotaLass.Windows
 
         private void RetrieveData()
         {
-            RefreshSpinner.Spin = true;
+            this.Dispatcher.Invoke(() =>
+            {
+                RefreshSpinner.Spin = true;
+            });
 
             var playerIDs = OpenDotaAPI.GetPlayerIDs();
 
@@ -110,8 +113,8 @@ namespace DotaLass.Windows
         public void AutoSizeWindow()
         {
             Grid content = this.Content as Grid;
-
-            content.Measure(new Size(double.MaxValue, double.MaxValue));
+            
+            content.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             
             this.MaxWidth = content.DesiredSize.Width;
             this.MinHeight = content.DesiredSize.Height;

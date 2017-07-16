@@ -24,8 +24,7 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
             {
                 Width = 16,
                 Height = 16,
-                Icon = FontAwesome.WPF.FontAwesomeIcon.ExternalLink,
-                Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("LightGray"))
+                Icon = FontAwesome.WPF.FontAwesomeIcon.ExternalLink
             };
 
             image.MouseDown += (o, a) =>
