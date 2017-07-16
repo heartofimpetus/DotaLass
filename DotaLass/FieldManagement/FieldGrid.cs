@@ -38,29 +38,36 @@ namespace DotaLass.FieldManagement
             GenerateGrid();
         }
 
+        private FieldInfo CreateFieldInfo(string key, bool visible)
+        {
+            switch (key)
+            {
+                case nameof(PlayerDisplay.DisplayData.ID): return new FieldInfo(visible, new ProfileLinkField(Window));
+                case nameof(PlayerDisplay.DisplayData.SoloMMR): return new FieldInfo(visible, new StringField(Window, key, "Solo MMR", 150));
+                case nameof(PlayerDisplay.DisplayData.EstimateMMR): return new FieldInfo(visible, new StringField(Window, key, "Estimate MMR", 150));
+                case nameof(PlayerDisplay.DisplayData.Winrate): return new FieldInfo(visible, new FloatField(Window, key, "Winrate", 100, "0.#%"));
+                case nameof(PlayerDisplay.DisplayData.AverageKills): return new FieldInfo(visible, new FloatField(Window, key, "K", 50));
+                case nameof(PlayerDisplay.DisplayData.AverageDeaths): return new FieldInfo(visible, new FloatField(Window, key, "D", 50));
+                case nameof(PlayerDisplay.DisplayData.AverageAssists): return new FieldInfo(visible, new FloatField(Window, key, "A", 50));
+                case nameof(PlayerDisplay.DisplayData.AverageXPM): return new FieldInfo(visible, new FloatField(Window, key, "XPM", 75));
+                case nameof(PlayerDisplay.DisplayData.AverageGPM): return new FieldInfo(visible, new FloatField(Window, key, "GPM", 75));
+                case nameof(PlayerDisplay.DisplayData.AverageHeroDamage): return new FieldInfo(visible, new FloatField(Window, key, "DMG", 100));
+                case nameof(PlayerDisplay.DisplayData.AverageTowerDamage): return new FieldInfo(visible, new FloatField(Window, key, "BLD", 75));
+                case nameof(PlayerDisplay.DisplayData.AverageHeroHealing): return new FieldInfo(visible, new FloatField(Window, key, "HEAL", 75));
+                case nameof(PlayerDisplay.DisplayData.AverageLastHits): return new FieldInfo(visible, new FloatField(Window, key, "LH", 75));
+                case nameof(PlayerDisplay.DisplayData.HeroesPlayed): return new FieldInfo(visible, new HeroesPlayedField(Window, "Heroes"));
+                default: return null;
+            }
+        }
+
         private void CreateFields()
         {
-            Dictionary<string, FieldInfo> CoreFields = new Dictionary<string, FieldInfo>();
-
-            CoreFields.Add(nameof(PlayerDisplay.SoloMMR), new FieldInfo(true, new StringField(Window, nameof(PlayerDisplay.SoloMMR), "Solo MMR", 150)));
-            CoreFields.Add(nameof(PlayerDisplay.EstimateMMR), new FieldInfo(true, new StringField(Window, nameof(PlayerDisplay.EstimateMMR), "Estimate MMR", 150)));
-            CoreFields.Add(nameof(PlayerDisplay.Winrate), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.Winrate), "Winrate", 100, "0.#%")));
-            CoreFields.Add(nameof(PlayerDisplay.AverageKills), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageKills), "K", 50)));
-            CoreFields.Add(nameof(PlayerDisplay.AverageDeaths), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageDeaths), "D", 50)));
-            CoreFields.Add(nameof(PlayerDisplay.AverageAssists), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageAssists), "A", 50)));
-            CoreFields.Add(nameof(PlayerDisplay.AverageXPM), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageXPM), "XPM", 75)));
-            CoreFields.Add(nameof(PlayerDisplay.AverageGPM), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageGPM), "GPM", 75)));
-            CoreFields.Add(nameof(PlayerDisplay.AverageHeroDamage), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageHeroDamage), "DMG", 100)));
-            CoreFields.Add(nameof(PlayerDisplay.AverageTowerDamage), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageTowerDamage), "BLD", 75)));
-            CoreFields.Add(nameof(PlayerDisplay.AverageHeroHealing), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageHeroHealing), "HEAL", 75)));
-            CoreFields.Add(nameof(PlayerDisplay.AverageLastHits), new FieldInfo(true, new FloatField(Window, nameof(PlayerDisplay.AverageLastHits), "LH", 75)));
-            CoreFields.Add(nameof(PlayerDisplay.HeroesPlayed), new FieldInfo(true, new HeroesPlayedField(Window, "Heroes")));
-
             foreach (var fieldSetting in Settings.Instance.FieldSettings)
             {
-                FieldInfo fieldInfo = CoreFields[fieldSetting.Item1];
-                fieldInfo.Visible = fieldSetting.Item2;
-                FieldInfos.Add(fieldInfo);
+                FieldInfo fieldInfo = CreateFieldInfo(fieldSetting.Item1, fieldSetting.Item2);
+
+                if (fieldInfo != null)
+                    FieldInfos.Add(fieldInfo);
             }
         }
 
@@ -113,7 +120,7 @@ namespace DotaLass.FieldManagement
             {
                 for (int j = 0; j < FieldInfos.Count; j++)
                 {
-                    var fieldElement = FieldInfos[j].Field.GenerateField(PlayerDisplays[i]);
+                    var fieldElement = FieldInfos[j].Field.CreateField(PlayerDisplays[i]);
 
                     fieldElement.SetValue(Grid.RowProperty, FieldRowIndexes[i]);
 
@@ -146,14 +153,6 @@ namespace DotaLass.FieldManagement
             for (int i = 0; i < FieldInfos.Count; i++)
             {
                 FieldInfos[i].AlignElements(i);
-            }
-        }
-
-        private string BlueprintPath
-        {
-            get
-            {
-                return AppDomain.CurrentDomain.BaseDirectory + "/Settings.json";
             }
         }
 

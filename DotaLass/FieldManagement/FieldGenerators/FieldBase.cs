@@ -37,9 +37,27 @@ namespace DotaLass.FieldManagement.FieldGenerators
 
             return BorderControl(fieldHeader);
         }
-        public abstract UIElement GenerateField(PlayerDisplay playerDisplay);
 
-        protected Border BorderControl(FrameworkElement control)
+        protected abstract UIElement CreateFieldElement(PlayerDisplay playerDisplay);
+
+        public UIElement CreateField(PlayerDisplay playerDisplay)
+        {
+            UIElement fieldElement = CreateFieldElement(playerDisplay);
+
+            fieldElement.Visibility = playerDisplay.ValidData ? Visibility.Visible : Visibility.Hidden;
+
+            playerDisplay.ValidityChanged += (o, a) =>
+            {
+                fieldElement.Dispatcher.Invoke(() =>
+                {
+                    fieldElement.Visibility = playerDisplay.ValidData ? Visibility.Visible : Visibility.Hidden;
+                });
+            };
+
+            return BorderControl(fieldElement);
+        }
+
+        private Border BorderControl(UIElement control)
         {
             Border border = new Border()
             {

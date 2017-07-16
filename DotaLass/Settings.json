@@ -1,7 +1,11 @@
 {
   "AutoRetrievePlayerData": true,
-  "BaseLinkAddress": null,
+  "PreferredSite": 0,
   "FieldSettings": [
+    {
+      "Item1": "ID",
+      "Item2": true
+    },
     {
       "Item1": "SoloMMR",
       "Item2": true

@@ -10,7 +10,27 @@ namespace DotaLass.API
     public class Settings
     {
         public bool AutoRetrievePlayerData { get; set; }
-        public string BaseLinkAddress { get; set; }
+        
+        public LinkSite PreferredSite { get; set; }
+
+        public enum LinkSite
+        {
+            OpenDota,
+            DotaBuff
+        }
+
+        public string BaseLinkAddress
+        {
+            get
+            {
+                switch (PreferredSite)
+                {
+                    default:
+                    case LinkSite.OpenDota: return "https://www.opendota.com";
+                    case LinkSite.DotaBuff: return "https://www.dotabuff.com";
+                }
+            }
+        }
 
         public List<Tuple<string, bool>> FieldSettings { get; set; }
 

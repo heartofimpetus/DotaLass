@@ -16,15 +16,15 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
         {
         }
 
-        public override UIElement GenerateField(PlayerDisplay playerDisplay)
+        protected override UIElement CreateFieldElement(PlayerDisplay playerDisplay)
         {
             Binding binding = new Binding(Path);
             Label label = new Label() { Width = Width, HorizontalContentAlignment = HorizontalAlignment.Center, VerticalContentAlignment = VerticalAlignment.Center };
 
-            label.DataContext = playerDisplay;
+            label.DataContext = playerDisplay.Data;
             label.SetBinding(Label.ContentProperty, binding);
 
-            return BorderControl(label);
+            return label;
         }
     }
 }

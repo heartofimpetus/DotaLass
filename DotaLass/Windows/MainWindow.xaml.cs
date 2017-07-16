@@ -115,7 +115,8 @@ namespace DotaLass.Windows
             
             this.MaxWidth = content.DesiredSize.Width;
             this.MinHeight = content.DesiredSize.Height;
-            this.MaxHeight = content.DesiredSize.Height;        }
+            this.MaxHeight = content.DesiredSize.Height;
+        }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {

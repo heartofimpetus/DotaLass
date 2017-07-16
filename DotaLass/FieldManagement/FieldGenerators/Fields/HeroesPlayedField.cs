@@ -15,11 +15,11 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
 {
     public class HeroesPlayedField : FieldBase
     {
-        public HeroesPlayedField(Window window, string fieldName) : base(window, nameof(PlayerDisplay.HeroesPlayed), fieldName, Double.NaN)
+        public HeroesPlayedField(Window window, string fieldName) : base(window, nameof(PlayerDisplay.DisplayData.HeroesPlayed), fieldName, double.NaN)
         {
         }
 
-        public override UIElement GenerateField(PlayerDisplay playerDisplay)
+        protected override UIElement CreateFieldElement(PlayerDisplay playerDisplay)
         {
             StackPanel panel = new StackPanel() { Orientation = Orientation.Horizontal };
 
@@ -28,25 +28,21 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
                 int index = i;
 
                 Image image = new Image() { Source = HeroIcons.BlankHeroIcon, Margin = new Thickness(1) };
-                
-                playerDisplay.PropertyChanged += (o, a) =>
+
+                playerDisplay.Data.PropertyChanged += (o, a) =>
                 {
                     if (a.PropertyName == Path)
                     {
                         Window.Dispatcher.Invoke(() =>
                         {
-                            if (playerDisplay.HeroesPlayed == null)
+                            if (playerDisplay.Data.HeroesPlayed != null)
                             {
-                                image.Source = HeroIcons.BlankHeroIcon;
-                            }
-                            else
-                            {
-                                if (index < playerDisplay.HeroesPlayed.Count)
+                                if (index < playerDisplay.Data.HeroesPlayed.Count)
                                 {
-                                    if (playerDisplay.HeroesPlayed[index].Item2)
-                                        image.Source = HeroIcons.HeroWinIcons[playerDisplay.HeroesPlayed[index].Item1 - 1];
+                                    if (playerDisplay.Data.HeroesPlayed[index].Item2)
+                                        image.Source = HeroIcons.HeroWinIcons[playerDisplay.Data.HeroesPlayed[index].Item1 - 1];
                                     else
-                                        image.Source = HeroIcons.HeroLossIcons[playerDisplay.HeroesPlayed[index].Item1 - 1];
+                                        image.Source = HeroIcons.HeroLossIcons[playerDisplay.Data.HeroesPlayed[index].Item1 - 1];
                                 }
                             }
                         });
@@ -56,7 +52,7 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
                 panel.Children.Add(image);
             }
 
-            return BorderControl(panel);
+            return panel;
         }
     }
 }

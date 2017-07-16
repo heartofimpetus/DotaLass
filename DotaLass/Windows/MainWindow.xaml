@@ -108,31 +108,31 @@
 
                 <!-- Player [0] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="1">
-                    <Label Margin="0" Foreground="#3074F9" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[0].Name}" />
+                    <Label Margin="0" Foreground="#3074F9" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[0].Data.Name}" />
                 </Border>
                 <!-- Player [0] -->
 
                 <!-- Player [1] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="2">
-                    <Label Margin="0" Foreground="#66FFC0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[1].Name}" />
+                    <Label Margin="0" Foreground="#66FFC0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[1].Data.Name}" />
                 </Border>
                 <!-- Player [1] -->
 
                 <!-- Player [2] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="3">
-                    <Label Margin="0" Foreground="#BD00B7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[2].Name}" />
+                    <Label Margin="0" Foreground="#BD00B7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[2].Data.Name}"/>
                 </Border>
                 <!-- Player [2] -->
 
                 <!-- Player [3] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="4">
-                    <Label Margin="0" Foreground="#F8F50A" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[3].Name}" />
+                    <Label Margin="0" Foreground="#F8F50A" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[3].Data.Name}" />
                 </Border>
                 <!-- Player [3] -->
 
                 <!-- Player [4] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="5">
-                    <Label Margin="0" Foreground="#FF6901" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[4].Name}" />
+                    <Label Margin="0" Foreground="#FF6901" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[4].Data.Name}" />
                 </Border>
                 <!-- Player [4] -->
 
@@ -144,31 +144,31 @@
 
                 <!-- Player [5] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="7">
-                    <Label Margin="0" Foreground="#FF88C5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[5].Name}" />
+                    <Label Margin="0" Foreground="#FF88C5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[5].Data.Name}" />
                 </Border>
                 <!-- Player [5] -->
 
                 <!-- Player [6] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="8">
-                    <Label Margin="0" Foreground="#A2B349" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[6].Name}" />
+                    <Label Margin="0" Foreground="#A2B349" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[6].Data.Name}" />
                 </Border>
                 <!-- Player [6] -->
 
                 <!-- Player [7] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="9">
-                    <Label Margin="0" Foreground="#63DAFA" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[7].Name}" />
+                    <Label Margin="0" Foreground="#63DAFA" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[7].Data.Name}" />
                 </Border>
                 <!-- Player [7] -->
 
                 <!-- Player [8] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="10">
-                    <Label Margin="0" Foreground="#01831F" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[8].Name}" />
+                    <Label Margin="0" Foreground="#01831F" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[8].Data.Name}" />
                 </Border>
                 <!-- Player [8] -->
 
                 <!-- Player [9] -->
                 <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="11">
-                    <Label Margin="0" Foreground="#9F6B00" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[9].Name}" />
+                    <Label Margin="0" Foreground="#9F6B00" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[9].Data.Name}" />
                 </Border>
                 <!-- Player [9] -->
 
