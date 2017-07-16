@@ -1,0 +1,58 @@
+{
+  "AutoRetrievePlayerData": true,
+  "BaseLinkAddress": null,
+  "FieldSettings": [
+    {
+      "Item1": "SoloMMR",
+      "Item2": true
+    },
+    {
+      "Item1": "EstimateMMR",
+      "Item2": true
+    },
+    {
+      "Item1": "Winrate",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageKills",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageDeaths",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageAssists",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageXPM",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageGPM",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageHeroDamage",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageTowerDamage",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageHeroHealing",
+      "Item2": true
+    },
+    {
+      "Item1": "AverageLastHits",
+      "Item2": true
+    },
+    {
+      "Item1": "HeroesPlayed",
+      "Item2": true
+    }
+  ]
+}

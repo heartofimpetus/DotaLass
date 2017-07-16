@@ -1,0 +1,196 @@
+﻿<Window x:Class="DotaLass.Windows.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:DotaLass"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d" 
+        Title="DotaLass" 
+        Height="520" 
+        Width="800"
+        WindowStyle="None" 
+        WindowStartupLocation="Manual"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown"
+        ResizeMode="CanResizeWithGrip" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Dictionaries/CustomizedComboBox.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Dictionaries/CustomizedScrollViewer.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="RadiantColor">#598307</Color>
+            <Color x:Key="DireColor">#A83806</Color>
+            <SolidColorBrush x:Key="RadiantBrush" Color="{StaticResource RadiantColor}" />
+            <SolidColorBrush x:Key="DireBrush" Color="{StaticResource DireColor}" />
+
+            <Style x:Key="HeaderStyle" TargetType="Control" BasedOn="{StaticResource TextStyle}">
+                <Setter Property="Background" Value="#FF282828"/>
+            </Style>
+
+            <Style x:Key="RowStyle" TargetType="RowDefinition">
+                <Setter Property="Height" Value="37"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Black">
+        <Label Content="DotaLass" HorizontalContentAlignment="Center" Height="35" VerticalAlignment="Top" Width="300" Padding="0" Margin="0" FontWeight="Bold" FontSize="25" HorizontalAlignment="Center" VerticalContentAlignment="Center"  />
+        <DockPanel LastChildFill="False">
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Height="25" VerticalAlignment="Top" Margin="5" DockPanel.Dock="Top">
+                <Button x:Name="BtnClose" Width="23"  Click="BtnClose_Click">
+                    <Button.Content>
+                        <fa:ImageAwesome Icon="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="LightGray" Margin="2" />
+                    </Button.Content>
+                </Button>
+                <Button x:Name="BtnRefresh" Width="23" Click="BtnRefresh_Click" RenderTransformOrigin="0.5,0.5">
+                    <Button.Content>
+                        <fa:ImageAwesome x:Name="RefreshSpinner" Spin="False" SpinDuration="3" Icon="CircleOutlineNotch" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="LightGray" Margin="2" />
+                    </Button.Content>
+                </Button>
+                <Button x:Name="BtnSettings" Width="23" Click="BtnSettings_Click">
+                    <Button.Content>
+                        <fa:ImageAwesome Icon="Gear" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="LightGray" Margin="2" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+
+            <Grid Margin="5,5,5,20" DockPanel.Dock="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                    <RowDefinition Style="{StaticResource RowStyle}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Faction Colors -->
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource BorderBrush}" Grid.Column="0" Grid.Row="0" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="0" Grid.Row="1" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="0" Grid.Row="2" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="0" Grid.Row="3" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="0" Grid.Row="4" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="0" Grid.Row="5" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource BorderBrush}" Grid.Column="0" Grid.Row="6" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="0" Grid.Row="7" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="0" Grid.Row="8" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="0" Grid.Row="9" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="0" Grid.Row="10" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="0" Grid.Row="11" />
+
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource BorderBrush}" Grid.Column="5" Grid.Row="0" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="5" Grid.Row="1" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="5" Grid.Row="2" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="5" Grid.Row="3" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="5" Grid.Row="4" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource RadiantBrush}" Grid.Column="5" Grid.Row="5" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource BorderBrush}" Grid.Column="5" Grid.Row="6" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="5" Grid.Row="7" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="5" Grid.Row="8" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="5" Grid.Row="9" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="5" Grid.Row="10" />
+                <Border Style="{StaticResource BorderStyle}" Background="{StaticResource DireBrush}" Grid.Column="5" Grid.Row="11" />
+                <!-- Faction Colors -->
+
+                <!-- RadiantBrush Headers -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="0">
+                    <Label Content="Name" Style="{StaticResource HeaderStyle}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                </Border>
+                <!-- RadiantBrush Headers -->
+
+                <!-- Player [0] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="1">
+                    <Label Margin="0" Foreground="#3074F9" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[0].Name}" />
+                </Border>
+                <!-- Player [0] -->
+
+                <!-- Player [1] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="2">
+                    <Label Margin="0" Foreground="#66FFC0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[1].Name}" />
+                </Border>
+                <!-- Player [1] -->
+
+                <!-- Player [2] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="3">
+                    <Label Margin="0" Foreground="#BD00B7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[2].Name}" />
+                </Border>
+                <!-- Player [2] -->
+
+                <!-- Player [3] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="4">
+                    <Label Margin="0" Foreground="#F8F50A" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[3].Name}" />
+                </Border>
+                <!-- Player [3] -->
+
+                <!-- Player [4] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="5">
+                    <Label Margin="0" Foreground="#FF6901" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[4].Name}" />
+                </Border>
+                <!-- Player [4] -->
+
+                <!-- DireBrush Headers -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="6">
+                    <Label Content="Name" Style="{StaticResource HeaderStyle}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                </Border>
+                <!-- DireBrush Headers -->
+
+                <!-- Player [5] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="7">
+                    <Label Margin="0" Foreground="#FF88C5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[5].Name}" />
+                </Border>
+                <!-- Player [5] -->
+
+                <!-- Player [6] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="8">
+                    <Label Margin="0" Foreground="#A2B349" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[6].Name}" />
+                </Border>
+                <!-- Player [6] -->
+
+                <!-- Player [7] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="9">
+                    <Label Margin="0" Foreground="#63DAFA" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[7].Name}" />
+                </Border>
+                <!-- Player [7] -->
+
+                <!-- Player [8] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="10">
+                    <Label Margin="0" Foreground="#01831F" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[8].Name}" />
+                </Border>
+                <!-- Player [8] -->
+
+                <!-- Player [9] -->
+                <Border Style="{StaticResource BorderStyle}" Grid.Column="1" Grid.Row="11">
+                    <Label Margin="0" Foreground="#9F6B00" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding PlayerDisplays[9].Name}" />
+                </Border>
+                <!-- Player [9] -->
+
+                <ScrollViewer Grid.Column="2" Grid.Row="0" Grid.RowSpan="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Padding="0" Margin="0,0,0,-15">
+                    <Grid x:Name="DataGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                            <RowDefinition Style="{StaticResource RowStyle}"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
