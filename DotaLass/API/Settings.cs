@@ -19,6 +19,7 @@ namespace DotaLass.API
             DotaBuff
         }
 
+        [JsonIgnore]
         public string BaseLinkAddress
         {
             get

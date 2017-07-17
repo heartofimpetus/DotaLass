@@ -112,7 +112,7 @@ namespace DotaLass.Windows
 
         public void AutoSizeWindow()
         {
-            Grid content = this.Content as Grid;
+            UIElement content = this.Content as UIElement;
             
             content.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             
