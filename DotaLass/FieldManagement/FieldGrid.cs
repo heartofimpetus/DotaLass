@@ -55,7 +55,7 @@ namespace DotaLass.FieldManagement
                 case nameof(PlayerDisplay.DisplayData.AverageTowerDamage): return new FieldInfo(visible, new FloatField(Window, key, "BLD", 75));
                 case nameof(PlayerDisplay.DisplayData.AverageHeroHealing): return new FieldInfo(visible, new FloatField(Window, key, "HEAL", 75));
                 case nameof(PlayerDisplay.DisplayData.AverageLastHits): return new FieldInfo(visible, new FloatField(Window, key, "LH", 75));
-                case nameof(PlayerDisplay.DisplayData.HeroesPlayed): return new FieldInfo(visible, new HeroesPlayedField(Window, "Heroes"));
+                case nameof(PlayerDisplay.DisplayData.RecentMatches): return new FieldInfo(visible, new HeroIconsField(Window, "Recent Matches"));
                 default: return null;
             }
         }

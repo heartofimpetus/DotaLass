@@ -57,11 +57,16 @@ namespace DotaLass.API
                 });
             }
         }
-        
+
         public void OpenProfile()
         {
             if (!string.IsNullOrEmpty(Data.ID))
                 Process.Start(Settings.Instance.BaseLinkAddress + $"/players/{Data.ID}");
+        }
+
+        public void OpenMatch(int index)
+        {
+            Process.Start(Settings.Instance.BaseLinkAddress + $"/matches/{Data.RecentMatches[index].match_id}");
         }
 
         public class DisplayData : INotifyPropertyChanged
@@ -74,7 +79,7 @@ namespace DotaLass.API
 
             public float Winrate { get; private set; }
             public TimeSpan AverageDuration { get; private set; }
-            public List<Tuple<int, bool>> HeroesPlayed { get; private set; }
+            public RecentMatch[] RecentMatches { get; private set; }
             public float AverageKills { get; private set; }
             public float AverageDeaths { get; private set; }
             public float AverageAssists { get; private set; }
@@ -84,10 +89,10 @@ namespace DotaLass.API
             public float AverageTowerDamage { get; private set; }
             public float AverageHeroHealing { get; private set; }
             public float AverageLastHits { get; private set; }
-            
+
             public event PropertyChangedEventHandler PropertyChanged;
 
-            public void ConsumeData(string id,  PlayerData playerData, RecentMatch[] recentMatches)
+            public void ConsumeData(string id, PlayerData playerData, RecentMatch[] recentMatches)
             {
                 ID = id;
 
@@ -119,7 +124,7 @@ namespace DotaLass.API
             {
                 if (recentMatches != null)
                 {
-                    HeroesPlayed = new List<Tuple<int, bool>>();
+                    RecentMatches = recentMatches;
 
                     float wonMatches = 0;
                     int totalSeconds = 0;
@@ -139,8 +144,6 @@ namespace DotaLass.API
                             wonMatches++;
 
                         totalSeconds += match.duration;
-
-                        HeroesPlayed.Add(new Tuple<int, bool>(match.hero_id, match.Won));
 
                         totalKills += match.kills;
                         totalDeaths += match.deaths;
@@ -181,7 +184,7 @@ namespace DotaLass.API
 
                 Winrate = 0;
                 AverageDuration = TimeSpan.Zero;
-                HeroesPlayed = null;
+                RecentMatches = null;
                 AverageKills = 0;
                 AverageDeaths = 0;
                 AverageAssists = 0;
@@ -203,7 +206,7 @@ namespace DotaLass.API
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SoloMMR)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Winrate)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageDuration)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HeroesPlayed)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RecentMatches)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageKills)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageDeaths)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageAssists)));

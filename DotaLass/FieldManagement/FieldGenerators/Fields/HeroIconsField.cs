@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 
 namespace DotaLass.FieldManagement.FieldGenerators.Fields
 {
-    public class HeroesPlayedField : FieldBase
+    public class HeroIconsField : FieldBase
     {
-        public HeroesPlayedField(Window window, string fieldName) : base(window, nameof(PlayerDisplay.DisplayData.HeroesPlayed), fieldName, double.NaN)
+        public HeroIconsField(Window window, string fieldName) : base(window, nameof(PlayerDisplay.DisplayData.RecentMatches), fieldName, double.NaN)
         {
         }
 
@@ -29,20 +29,28 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
 
                 Image image = new Image() { Source = HeroIcons.BlankHeroIcon, Margin = new Thickness(1) };
 
+                image.MouseDown += (o, a) =>
+                {
+                    if (index < playerDisplay.Data.RecentMatches.Length)
+                    {
+                        playerDisplay.OpenMatch(index);
+                    }
+                };
+
                 playerDisplay.Data.PropertyChanged += (o, a) =>
                 {
                     if (a.PropertyName == Path)
                     {
                         Window.Dispatcher.Invoke(() =>
                         {
-                            if (playerDisplay.Data.HeroesPlayed != null)
+                            if (playerDisplay.Data.RecentMatches != null)
                             {
-                                if (index < playerDisplay.Data.HeroesPlayed.Count)
+                                if (index < playerDisplay.Data.RecentMatches.Length)
                                 {
-                                    if (playerDisplay.Data.HeroesPlayed[index].Item2)
-                                        image.Source = HeroIcons.HeroWinIcons[playerDisplay.Data.HeroesPlayed[index].Item1 - 1];
+                                    if (playerDisplay.Data.RecentMatches[index].Won)
+                                        image.Source = HeroIcons.HeroWinIcons[playerDisplay.Data.RecentMatches[index].hero_id - 1];
                                     else
-                                        image.Source = HeroIcons.HeroLossIcons[playerDisplay.Data.HeroesPlayed[index].Item1 - 1];
+                                        image.Source = HeroIcons.HeroLossIcons[playerDisplay.Data.RecentMatches[index].hero_id - 1];
                                 }
                             }
                         });

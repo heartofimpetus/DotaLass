@@ -110,7 +110,7 @@
     </Compile>
     <Compile Include="FieldManagement\FieldGenerators\FieldBase.cs" />
     <Compile Include="FieldManagement\FieldGenerators\Fields\FloatField.cs" />
-    <Compile Include="FieldManagement\FieldGenerators\Fields\HeroesPlayedField.cs" />
+    <Compile Include="FieldManagement\FieldGenerators\Fields\HeroIconsField.cs" />
     <Compile Include="FieldManagement\FieldGenerators\Fields\StringField.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

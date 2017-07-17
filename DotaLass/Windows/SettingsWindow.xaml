@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:DotaLass.Windows"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="Setting" Height="200" Width="300" ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False" WindowStyle="None" MouseDown="Window_MouseDown"
-        Background="Black">
+        Title="Setting" Width="390" ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False" WindowStyle="None" MouseDown="Window_MouseDown"
+        Background="Black" Height="275">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Dictionaries/CustomizedScrollViewer.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Dictionaries/CustomizedComboBox.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource TextStyle}">
                 <Setter Property="Template">
@@ -35,6 +36,7 @@
                 <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
                 <Setter Property="Background" Value="LightGray"/>
             </Style>
+            <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource TextStyle}"/>
         </ResourceDictionary>
     </Window.Resources>
     <Border Style="{StaticResource BorderStyle}" Margin="2" BorderThickness="2">
@@ -48,7 +50,7 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <Grid>
+                <Grid DockPanel.Dock="Top" Height="190">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -85,6 +87,37 @@
                     <Button x:Name="BtnMoveUp" Content="5" Grid.Column="1" Margin="1,5,5,1" FontFamily="Marlett" Click="BtnMoveUp_Click"/>
                     <Button x:Name="BtnMoveDown" Content="6" Grid.Row="1" Grid.Column="1" Margin="1,1,5,5" FontFamily="Marlett" Click="BtnMoveDown_Click"/>
 
+                </Grid>
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Border Style="{StaticResource BorderStyle}" Margin="5,1,1,5" Grid.Column="0" Grid.Row="0">
+
+                        <Border Style="{StaticResource BorderStyle}" Margin="5,5,5,5">
+                            <CheckBox x:Name="ChkAutoRetrieveData" VerticalContentAlignment="Center" Content="Auto Retrieve Data" Margin="1,0,0,0" Unchecked="ChkAutoRetrieveData_Changed" Checked="ChkAutoRetrieveData_Changed"/>
+                        </Border>
+                    </Border>
+                    <Border Style="{StaticResource BorderStyle}" Margin="1,1,1,5" Grid.Column="1" Grid.Row="0">
+                        <Border Style="{StaticResource BorderStyle}" Margin="5,5,5,5" Grid.Column="1" Grid.Row="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <RadioButton x:Name="RBtnOpenDota" Content="OpenDota" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0" Checked="PreferredSite_Checked"  Grid.Column="0" Grid.Row="0"/>
+                                <RadioButton x:Name="RBtnDotaBuff" Content="DotaBuff"  DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0"  Checked="PreferredSite_Checked" Grid.Column="1" Grid.Row="0"/>
+                            </Grid>
+                        </Border>
+                    </Border>
                 </Grid>
             </DockPanel>
         </Grid>

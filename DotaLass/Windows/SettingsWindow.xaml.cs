@@ -1,4 +1,5 @@
-﻿using DotaLass.FieldManagement;
+﻿using DotaLass.API;
+using DotaLass.FieldManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,22 @@ namespace DotaLass.Windows
             FieldGrid = fieldGrid;
 
             PopulateListBox();
+
+            ChkAutoRetrieveData.IsChecked = Settings.Instance.AutoRetrievePlayerData;
+
+            switch (Settings.Instance.PreferredSite)
+            {
+                case Settings.LinkSite.OpenDota:
+                    {
+                        RBtnOpenDota.IsChecked = true;
+                    }
+                    break;
+                case Settings.LinkSite.DotaBuff:
+                    {
+                        RBtnDotaBuff.IsChecked = true;
+                    }
+                    break;
+            }
         }
 
         List<CheckBox> CheckBoxes;
@@ -105,7 +122,7 @@ namespace DotaLass.Windows
                 CheckBoxes[i].IsChecked = FieldGrid.FieldInfos[i].Visible;
             }
         }
-        
+
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -159,6 +176,23 @@ namespace DotaLass.Windows
                 FieldGrid.UpdateColumns();
                 MainWindow.AutoSizeWindow();
             }
+        }
+
+        private void PreferredSite_Checked(object sender, RoutedEventArgs e)
+        {
+            if (RBtnOpenDota.IsChecked.HasValue && RBtnOpenDota.IsChecked.Value)
+                Settings.Instance.PreferredSite = Settings.LinkSite.OpenDota;
+
+            if (RBtnDotaBuff.IsChecked.HasValue && RBtnDotaBuff.IsChecked.Value)
+                Settings.Instance.PreferredSite = Settings.LinkSite.DotaBuff;
+        }
+
+        private void ChkAutoRetrieveData_Changed(object sender, RoutedEventArgs e)
+        {
+            if (ChkAutoRetrieveData.IsChecked.HasValue)
+                Settings.Instance.AutoRetrievePlayerData = ChkAutoRetrieveData.IsChecked.Value;
+            else
+                Settings.Instance.AutoRetrievePlayerData = false;
         }
     }
 }
