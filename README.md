@@ -1,23 +1,37 @@
 # DotaLass
 Dota 2 Stats Retrieval App
 #### Features
-- Retrieve stats from all 10 players automatically when a lobby is found.
-- Stats come from recent games (20~), so you know exactly what you are playing against.
-- Various stats including Winrate, GPM, XPM.
-- List of heroes played and whether a player won or loss
-- Fully customizable, choose which stats and where at the click of a button
+- Retrieve stats from all 10 players automatically when a match is found.
+- Calculates averages for the last 20~ games.
+- 14 different fields to choose from, see only the stats you care about.
+- Quick links to player profiles and specific matches, straight to your preferred stats site (OpenDota/DotaBuff).
+#### Fields
+- Profile
+- Solo MMR
+- Estimate MMR
+- Winrate
+- Kills
+- Deaths
+- Assists
+- XPM
+- GPM
+- Hero Damage
+- Tower Damage
+- Hero Healing
+- Last Hits
+- Recent Matches
+#### Customization
+Choose which fields you want displayed and in which order with the click of a button.
+![Settings](http://i.imgur.com/UCI5YtW.png)
 #### How to Use
-- Unzip the release download which can be found [here](https://github.com/heartofimpetus/DotaLass/releases/tag/1.0).
-- Run DotaLass.exe
-- Either start a match of Dota 2 to automatically download stats for it's players or press the round refresh button to load your last game's data.
+- Download the latest release [here](https://github.com/heartofimpetus/DotaLass/releases).
+- Unzip & run DotaLass.exe
+- Either start a match of Dota 2 to automatically download stats for it's players or press the refresh button to load your last game's data.
 
 #### Is this VAC-Bannable?
-No it is not, this app simply takes advantage of a fair to use file called `server_log.txt` in the Dota 2 game directory, aswell as the wonderful [OpenDota](https://www.opendota.com/) public api.
-There is no memory reading from the Dota 2 application and risk of being banned.
+No it is not, this app simply takes advantage of a fair to use file called `server_log.txt` in the Dota 2 game directory, aswell as the [OpenDota](https://www.opendota.com/) public api.
+There is no memory reading from the Dota 2 application and no risk of being banned.
 #### Screenshots
-##### See the stats that matter
-![Stats](http://i.imgur.com/W5VUJSk.png)
-##### See the heroes that have been played
-![Heroes](http://i.imgur.com/eRXucyT.png)
-##### Or just see what ever you want
-![](http://i.imgur.com/SNftSKg.png)
+![Stats](http://i.imgur.com/aD3c7N9.png)
+![Heroes](http://i.imgur.com/xZwYD6V.png)
+![Custom](http://i.imgur.com/QS2CnCI.png)
