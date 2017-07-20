@@ -47,12 +47,11 @@ namespace DotaLass.API
                     playerData = OpenDotaAPI.GetPlayerData(playerID);
                     recentMatches = OpenDotaAPI.GetPlayerRecentMatchs(playerID);
 
-                    Data.ConsumeData(playerID, playerData, recentMatches);
+                    ValidData = Data.ConsumeData(playerID, playerData, recentMatches);
 
                     RetrievingData = false;
                     RetrievalCompleted?.Invoke(this, null);
-
-                    ValidData = true;
+                    
                     ValidityChanged?.Invoke(this, null);
                 });
             }
@@ -92,37 +91,45 @@ namespace DotaLass.API
 
             public event PropertyChangedEventHandler PropertyChanged;
 
-            public void ConsumeData(string id, PlayerData playerData, RecentMatch[] recentMatches)
+            public bool ConsumeData(string id, PlayerData playerData, RecentMatch[] recentMatches)
             {
                 ID = id;
 
-                ConsumePlayerData(playerData);
-                ConsumeRecentMatches(recentMatches);
+                if (!ConsumePlayerData(playerData))
+                    return false;
+                if (!ConsumeRecentMatches(recentMatches))
+                    return false;
 
                 NotifyPropertiesChanged();
+
+                return true;
             }
 
-            private void ConsumePlayerData(PlayerData playerData)
+            private bool ConsumePlayerData(PlayerData playerData)
             {
                 if (playerData == null)
                 {
-                    Name = "{Network Error}";
+                    return false;
                 }
                 else if (playerData.profile == null)
                 {
                     Name = "Anonymous";
+
+                    return true;
                 }
                 else
                 {
                     Name = playerData.profile.personaname;
                     SoloMMR = playerData.solo_competitive_rank ?? "X";
                     EstimateMMR = playerData.mmr_estimate.estimate.HasValue ? playerData.mmr_estimate.estimate.ToString() : "X";
+
+                    return true;
                 }
 
             }
-            private void ConsumeRecentMatches(RecentMatch[] recentMatches)
+            private bool ConsumeRecentMatches(RecentMatch[] recentMatches)
             {
-                if (recentMatches != null)
+                if (recentMatches != null && recentMatches.Length > 0)
                 {
                     RecentMatches = recentMatches;
 
@@ -171,6 +178,12 @@ namespace DotaLass.API
                     AverageTowerDamage = totalTowerDamage / recentMatches.Length;
                     AverageHeroHealing = totalHeroHealing / recentMatches.Length;
                     AverageLastHits = totalLastHits / recentMatches.Length;
+
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
 
