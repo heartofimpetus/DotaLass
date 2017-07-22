@@ -103,7 +103,7 @@
                             <CheckBox x:Name="ChkAutoRetrieveData" VerticalContentAlignment="Center" Content="Auto Retrieve Data" Margin="1,0,0,0" Unchecked="ChkAutoRetrieveData_Changed" Checked="ChkAutoRetrieveData_Changed"/>
                         </Border>
                     </Border>
-                    <Border Style="{StaticResource BorderStyle}" Margin="1,1,1,5" Grid.Column="1" Grid.Row="0">
+                    <Border Style="{StaticResource BorderStyle}" Margin="1,1,5,5" Grid.Column="1" Grid.Row="0">
                         <Border Style="{StaticResource BorderStyle}" Margin="5,5,5,5" Grid.Column="1" Grid.Row="0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -113,8 +113,8 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <RadioButton x:Name="RBtnOpenDota" Content="OpenDota" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0" Checked="PreferredSite_Checked"  Grid.Column="0" Grid.Row="0"/>
-                                <RadioButton x:Name="RBtnDotaBuff" Content="DotaBuff"  DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0"  Checked="PreferredSite_Checked" Grid.Column="1" Grid.Row="0"/>
+                                <RadioButton x:Name="RBtnOpenDota" Content="OpenDota" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="0" Checked="PreferredSite_Checked"  Grid.Column="0" Grid.Row="0"/>
+                                <RadioButton x:Name="RBtnDotaBuff" Content="DotaBuff"  DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="0"  Checked="PreferredSite_Checked" Grid.Column="1" Grid.Row="0"/>
                             </Grid>
                         </Border>
                     </Border>

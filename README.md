@@ -22,7 +22,7 @@ Dota 2 Stats Retrieval App
 - Recent Matches
 #### Customization
 Choose which fields you want displayed and in which order with the click of a button.
-![Settings](http://i.imgur.com/UCI5YtW.png)
+![Settings](http://i.imgur.com/aGzECn6.png)
 #### How to Use
 - Download the latest release [here](https://github.com/heartofimpetus/DotaLass/releases).
 - Unzip & run DotaLass.exe
