@@ -80,8 +80,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="API\Outputs\Match.cs" />
+    <Compile Include="API\PlayerNotes.cs" />
     <Compile Include="API\Settings.cs" />
+    <Compile Include="FieldManagement\FieldGenerators\Fields\NotesField.cs" />
     <Compile Include="FieldManagement\FieldGenerators\Fields\ProfileLinkField.cs" />
+    <Compile Include="Windows\NotesWindow.xaml.cs">
+      <DependentUpon>NotesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -116,6 +121,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\NotesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +152,9 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Notes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

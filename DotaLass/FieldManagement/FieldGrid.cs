@@ -42,20 +42,21 @@ namespace DotaLass.FieldManagement
         {
             switch (key)
             {
-                case nameof(PlayerDisplay.DisplayData.ID): return new FieldInfo(visible, new ProfileLinkField(Window));
-                case nameof(PlayerDisplay.DisplayData.SoloMMR): return new FieldInfo(visible, new StringField(Window, key, "Solo MMR", 120));
-                case nameof(PlayerDisplay.DisplayData.EstimateMMR): return new FieldInfo(visible, new StringField(Window, key, "Estimate MMR", 120));
-                case nameof(PlayerDisplay.DisplayData.Winrate): return new FieldInfo(visible, new FloatField(Window, key, "Winrate", 100, "0.#%"));
-                case nameof(PlayerDisplay.DisplayData.AverageKills): return new FieldInfo(visible, new FloatField(Window, key, "K", 50));
-                case nameof(PlayerDisplay.DisplayData.AverageDeaths): return new FieldInfo(visible, new FloatField(Window, key, "D", 50));
-                case nameof(PlayerDisplay.DisplayData.AverageAssists): return new FieldInfo(visible, new FloatField(Window, key, "A", 50));
-                case nameof(PlayerDisplay.DisplayData.AverageXPM): return new FieldInfo(visible, new FloatField(Window, key, "XPM", 75));
-                case nameof(PlayerDisplay.DisplayData.AverageGPM): return new FieldInfo(visible, new FloatField(Window, key, "GPM", 75));
-                case nameof(PlayerDisplay.DisplayData.AverageHeroDamage): return new FieldInfo(visible, new FloatField(Window, key, "DMG", 100));
-                case nameof(PlayerDisplay.DisplayData.AverageTowerDamage): return new FieldInfo(visible, new FloatField(Window, key, "BLD", 75));
-                case nameof(PlayerDisplay.DisplayData.AverageHeroHealing): return new FieldInfo(visible, new FloatField(Window, key, "HEAL", 75));
-                case nameof(PlayerDisplay.DisplayData.AverageLastHits): return new FieldInfo(visible, new FloatField(Window, key, "LH", 75));
-                case nameof(PlayerDisplay.DisplayData.RecentMatches): return new FieldInfo(visible, new HeroIconsField(Window, "Recent Matches"));
+                case "Profile": return new FieldInfo(visible, new ProfileLinkField(Window));
+                case "Notes": return new FieldInfo(visible, new NotesField(Window));
+                case "Solo MMR": return new FieldInfo(visible, new StringField(Window, nameof(PlayerDisplay.DisplayData.SoloMMR), "Solo MMR", 120));
+                case "Estimate MMR": return new FieldInfo(visible, new StringField(Window, nameof(PlayerDisplay.DisplayData.EstimateMMR), "Estimate MMR", 120));
+                case "Winrate": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.Winrate), "Winrate", 100, "0.#%"));
+                case "K": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageKills), "K", 50));
+                case "D": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageDeaths), "D", 50));
+                case "A": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageAssists), "A", 50));
+                case "XPM": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageXPM), "XPM", 75));
+                case "GPM": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageGPM), "GPM", 75));
+                case "DMG": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageTowerDamage), "DMG", 100));
+                case "BLD": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroHealing), "BLD", 75));
+                case "HEAL": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroHealing), "HEAL", 75));
+                case "LH": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageLastHits), "LH", 75));
+                case "Recent Matches": return new FieldInfo(visible, new HeroIconsField(Window, "Recent Matches"));
                 default: return null;
             }
         }
@@ -162,7 +163,7 @@ namespace DotaLass.FieldManagement
 
             foreach (var fieldInfo in FieldInfos)
             {
-                fieldSettings.Add(new Tuple<string, bool>(fieldInfo.Field.Path, fieldInfo.Visible));
+                fieldSettings.Add(new Tuple<string, bool>(fieldInfo.Field.Name, fieldInfo.Visible));
             }
 
             Settings.Instance.FieldSettings = fieldSettings;

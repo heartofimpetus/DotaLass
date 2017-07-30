@@ -18,7 +18,8 @@ namespace DotaLass
         {
             base.OnExit(e);
 
-            Settings.SaveBlueprint();
+            Settings.SaveSettings();
+            PlayerNotes.SaveNotes();
         }
     }
 }

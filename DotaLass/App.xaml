@@ -36,5 +36,6 @@
 
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource TextStyle}"/>
         <Style TargetType="{x:Type Control}" BasedOn="{StaticResource PixelStyle}"/>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextStyle}"/>
     </Application.Resources>
 </Application>

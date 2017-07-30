@@ -3,15 +3,19 @@
   "PreferredSite": 0,
   "FieldSettings": [
     {
-      "Item1": "ID",
+      "Item1": "Profile",
       "Item2": true
     },
     {
-      "Item1": "SoloMMR",
+      "Item1": "Notes",
       "Item2": true
     },
     {
-      "Item1": "EstimateMMR",
+      "Item1": "Solo MMR",
+      "Item2": true
+    },
+    {
+      "Item1": "Estimate MMR",
       "Item2": true
     },
     {
@@ -19,43 +23,43 @@
       "Item2": true
     },
     {
-      "Item1": "AverageKills",
+      "Item1": "K",
       "Item2": true
     },
     {
-      "Item1": "AverageDeaths",
+      "Item1": "D",
       "Item2": true
     },
     {
-      "Item1": "AverageAssists",
+      "Item1": "A",
       "Item2": true
     },
     {
-      "Item1": "AverageXPM",
+      "Item1": "XPM",
       "Item2": true
     },
     {
-      "Item1": "AverageGPM",
+      "Item1": "GPM",
       "Item2": true
     },
     {
-      "Item1": "AverageHeroDamage",
+      "Item1": "DMG",
       "Item2": true
     },
     {
-      "Item1": "AverageTowerDamage",
+      "Item1": "BLD",
       "Item2": true
     },
     {
-      "Item1": "AverageHeroHealing",
+      "Item1": "HEAL",
       "Item2": true
     },
     {
-      "Item1": "AverageLastHits",
+      "Item1": "LH",
       "Item2": true
     },
     {
-      "Item1": "RecentMatches",
+      "Item1": "Recent Matches",
       "Item2": true
     }
   ]

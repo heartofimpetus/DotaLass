@@ -67,7 +67,7 @@ namespace DotaLass.API
             }
         }
 
-        public static void SaveBlueprint()
+        public static void SaveSettings()
         {
             var json = JsonConvert.SerializeObject(Instance, Formatting.Indented);
 
