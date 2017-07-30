@@ -42,6 +42,7 @@ namespace DotaLass.Windows
             {
                 var playerDisplay = new PlayerDisplay();
 
+                playerDisplay.RetrievalStarted += PlayerDisplay_RetrievalStarted;
                 playerDisplay.RetrievalCompleted += PlayerDisplay_RetrievalCompleted;
 
                 PlayerDisplays.Add(playerDisplay);
@@ -51,7 +52,7 @@ namespace DotaLass.Windows
 
             SetupFileWatcher();
         }
-        
+
         private string LastLobby = null;
         private void SetupFileWatcher()
         {
@@ -84,7 +85,7 @@ namespace DotaLass.Windows
                 }
             };
         }
-
+        
         private void RetrieveData()
         {
             this.Dispatcher.Invoke(() =>
@@ -93,7 +94,7 @@ namespace DotaLass.Windows
             });
 
             var playerIDs = OpenDotaAPI.GetPlayerIDs();
-
+            
             for (int i = 0; i < 10; i++)
             {
                 if (i < playerIDs.Count)
@@ -102,11 +103,19 @@ namespace DotaLass.Windows
                     PlayerDisplays[i].Update("");
             }
         }
+
+
+        int runningRetrievals = 0;
+        private void PlayerDisplay_RetrievalStarted(object sender, EventArgs e)
+        {
+            runningRetrievals++;
+        }
         private void PlayerDisplay_RetrievalCompleted(object sender, EventArgs e)
         {
+            runningRetrievals--;
             this.Dispatcher.Invoke(() =>
             {
-                RefreshSpinner.Spin = PlayerDisplays.Any(x => x.RetrievingData);
+                RefreshSpinner.Spin = runningRetrievals != 0;
             });
         }
 
@@ -136,15 +145,8 @@ namespace DotaLass.Windows
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            BtnSettings.IsHitTestVisible = false;
-
             SettingsWindow settingsWindow = new SettingsWindow(this, FieldGrid);
-            settingsWindow.Show();
-
-            settingsWindow.Closed += (o, a) =>
-            {
-                BtnSettings.IsHitTestVisible = true;
-            };
+            settingsWindow.ShowDialog();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

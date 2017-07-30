@@ -79,6 +79,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API\Outputs\Match.cs" />
     <Compile Include="API\Settings.cs" />
     <Compile Include="FieldManagement\FieldGenerators\Fields\ProfileLinkField.cs" />
     <Compile Include="Windows\SettingsWindow.xaml.cs">
@@ -101,7 +102,6 @@
     <Compile Include="API\HeroIcons.cs" />
     <Compile Include="API\OpenDotaAPI.cs" />
     <Compile Include="API\Outputs\PlayerData.cs" />
-    <Compile Include="API\Outputs\RecentMatch.cs" />
     <Compile Include="API\PlayerDisplay.cs" />
     <Compile Include="API\RequestHandler.cs" />
     <Compile Include="App.xaml.cs">

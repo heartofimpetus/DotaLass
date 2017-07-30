@@ -21,12 +21,12 @@ namespace DotaLass.API
             else
                 return null;
         }
-        public static RecentMatch[] GetPlayerRecentMatchs(string playerID)
+        public static Match[] GetPlayerMatches(string playerID, int limit)
         {
-            string result = RequestHandler.GET($"https://api.opendota.com/api/players/{playerID}/recentMatches");
+            string result = RequestHandler.GET($@"https://api.opendota.com/api/players/{playerID}/matches?limit={limit}&project[]=hero_id&project[]=kills&project[]=deaths&project[]=assists&project[]=xp_per_min&project[]=gold_per_min&project[]=hero_damage&project[]=tower_damage&project[]=hero_healing&project[]=last_hits");
 
             if (result != null)
-                return JsonConvert.DeserializeObject<RecentMatch[]>(result);
+                return JsonConvert.DeserializeObject<Match[]>(result);
             else
                 return null;
         }

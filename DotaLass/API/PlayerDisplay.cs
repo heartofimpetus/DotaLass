@@ -19,42 +19,41 @@ namespace DotaLass.API
         public PlayerDisplay()
         {
             Data = new DisplayData();
+
         }
 
-        public bool ValidData { get; set; }
-        public event EventHandler ValidityChanged;
-
-        private Task RetrievalTask { get; set; }
-        public bool RetrievingData { get; set; }
+        public event EventHandler RetrievalStarted;
+        
         public event EventHandler RetrievalCompleted;
+
+        private CancellationTokenSource CTSource { get; set; }
 
         public void Update(string playerID)
         {
             Data.Clear();
 
-            ValidData = false;
-            ValidityChanged?.Invoke(this, null);
-
             PlayerData playerData = null;
-            RecentMatch[] recentMatches = null;
+            Match[] recentMatches = null;
 
-            if (RetrievalTask == null || RetrievalTask.IsCompleted)
+            CTSource?.Cancel();
+            CTSource = new CancellationTokenSource();
+
+            CancellationToken cancelToken = CTSource.Token;
+
+            Task.Factory.StartNew(() =>
             {
-                RetrievingData = true;
+                RetrievalStarted?.Invoke(this, null);
 
-                RetrievalTask = Task.Factory.StartNew(() =>
-                {
+                if (!cancelToken.IsCancellationRequested)
                     playerData = OpenDotaAPI.GetPlayerData(playerID);
-                    recentMatches = OpenDotaAPI.GetPlayerRecentMatchs(playerID);
+                if (!cancelToken.IsCancellationRequested)
+                    recentMatches = OpenDotaAPI.GetPlayerMatches(playerID, 20);
 
-                    ValidData = Data.ConsumeData(playerID, playerData, recentMatches);
+                if (!cancelToken.IsCancellationRequested)
+                    Data.ConsumeData(playerID, playerData, recentMatches);
 
-                    RetrievingData = false;
-                    RetrievalCompleted?.Invoke(this, null);
-                    
-                    ValidityChanged?.Invoke(this, null);
-                });
-            }
+                RetrievalCompleted?.Invoke(this, null);
+            }, cancelToken);
         }
 
         public void OpenProfile()
@@ -78,7 +77,7 @@ namespace DotaLass.API
 
             public float Winrate { get; private set; }
             public TimeSpan AverageDuration { get; private set; }
-            public RecentMatch[] RecentMatches { get; private set; }
+            public Match[] RecentMatches { get; private set; }
             public float AverageKills { get; private set; }
             public float AverageDeaths { get; private set; }
             public float AverageAssists { get; private set; }
@@ -91,43 +90,34 @@ namespace DotaLass.API
 
             public event PropertyChangedEventHandler PropertyChanged;
 
-            public bool ConsumeData(string id, PlayerData playerData, RecentMatch[] recentMatches)
+            public void ConsumeData(string id, PlayerData playerData, Match[] recentMatches)
             {
                 ID = id;
 
-                if (!ConsumePlayerData(playerData))
-                    return false;
-                if (!ConsumeRecentMatches(recentMatches))
-                    return false;
+                NotifyUpdateLocal();
 
-                NotifyPropertiesChanged();
-
-                return true;
+                ConsumePlayerData(playerData);
+                ConsumeRecentMatches(recentMatches);
             }
 
-            private bool ConsumePlayerData(PlayerData playerData)
+            private void ConsumePlayerData(PlayerData playerData)
             {
-                if (playerData == null)
-                {
-                    return false;
-                }
-                else if (playerData.profile == null)
+                if (playerData == null || playerData.profile == null)
                 {
                     Name = "Anonymous";
-
-                    return true;
+                    SoloMMR = "X";
+                    EstimateMMR = "X";
                 }
                 else
                 {
                     Name = playerData.profile.personaname;
                     SoloMMR = playerData.solo_competitive_rank ?? "X";
                     EstimateMMR = playerData.mmr_estimate.estimate.HasValue ? playerData.mmr_estimate.estimate.ToString() : "X";
-
-                    return true;
                 }
 
+                NotifyUpdateProfile();
             }
-            private bool ConsumeRecentMatches(RecentMatch[] recentMatches)
+            private void ConsumeRecentMatches(Match[] recentMatches)
             {
                 if (recentMatches != null && recentMatches.Length > 0)
                 {
@@ -179,11 +169,7 @@ namespace DotaLass.API
                     AverageHeroHealing = totalHeroHealing / recentMatches.Length;
                     AverageLastHits = totalLastHits / recentMatches.Length;
 
-                    return true;
-                }
-                else
-                {
-                    return false;
+                    NotifyUpdateMatches();
                 }
             }
 
@@ -208,15 +194,23 @@ namespace DotaLass.API
                 AverageHeroHealing = 0;
                 AverageLastHits = 0;
 
-                NotifyPropertiesChanged();
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
             }
 
-            private void NotifyPropertiesChanged()
+            private void NotifyUpdateLocal()
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ID)));
+            }
+
+            private void NotifyUpdateProfile()
+            {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EstimateMMR)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SoloMMR)));
+            }
+
+            private void NotifyUpdateMatches()
+            {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Winrate)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageDuration)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RecentMatches)));

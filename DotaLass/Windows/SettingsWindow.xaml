@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:DotaLass.Windows"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="Setting" Width="390" ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False" WindowStyle="None" MouseDown="Window_MouseDown"
-        Background="Black" Height="275">
+        Title="Setting" Width="390" ResizeMode="NoResize" WindowStyle="None" MouseDown="Window_MouseDown"
+        Background="Black" Height="275" ShowInTaskbar="False" Topmost="True">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
