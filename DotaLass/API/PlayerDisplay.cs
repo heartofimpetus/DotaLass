@@ -23,7 +23,7 @@ namespace DotaLass.API
         }
 
         public event EventHandler RetrievalStarted;
-        
+
         public event EventHandler RetrievalCompleted;
 
         private CancellationTokenSource CTSource { get; set; }
@@ -39,11 +39,11 @@ namespace DotaLass.API
             CTSource = new CancellationTokenSource();
 
             CancellationToken cancelToken = CTSource.Token;
+            
+            RetrievalStarted?.Invoke(this, null);
 
             Task.Factory.StartNew(() =>
             {
-                RetrievalStarted?.Invoke(this, null);
-
                 if (!cancelToken.IsCancellationRequested)
                     playerData = OpenDotaAPI.GetPlayerData(playerID);
                 if (!cancelToken.IsCancellationRequested)

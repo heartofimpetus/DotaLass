@@ -50,7 +50,7 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <Grid DockPanel.Dock="Top" Height="190">
+                <Grid DockPanel.Dock="Top" Height="190" Margin="5">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -60,7 +60,7 @@
                         <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListBox x:Name="ListBoxFields" Background="{x:Null}" BorderBrush="{StaticResource BorderBrush}" DockPanel.Dock="Top" Margin="5,5,1,5" Grid.RowSpan="2">
+                    <ListBox x:Name="ListBoxFields" Background="{x:Null}" BorderBrush="{StaticResource BorderBrush}" DockPanel.Dock="Top" Grid.RowSpan="2">
                         <ListBox.Template>
                             <ControlTemplate TargetType="{x:Type ListBox}">
                                 <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="True">
@@ -84,8 +84,8 @@
                             </ControlTemplate>
                         </ListBox.Template>
                     </ListBox>
-                    <Button x:Name="BtnMoveUp" Content="5" Grid.Column="1" Margin="1,5,5,1" FontFamily="Marlett" Click="BtnMoveUp_Click"/>
-                    <Button x:Name="BtnMoveDown" Content="6" Grid.Row="1" Grid.Column="1" Margin="1,1,5,5" FontFamily="Marlett" Click="BtnMoveDown_Click"/>
+                    <Button x:Name="BtnMoveUp" Content="5" Grid.Column="1" Margin="2,0,0,0" FontFamily="Marlett" Click="BtnMoveUp_Click"/>
+                    <Button x:Name="BtnMoveDown" Content="6" Grid.Row="1" Grid.Column="1" Margin="2,0,0,0" FontFamily="Marlett" Click="BtnMoveDown_Click"/>
 
                 </Grid>
                 <Grid DockPanel.Dock="Top">
@@ -97,26 +97,21 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Border Style="{StaticResource BorderStyle}" Margin="5,1,1,5" Grid.Column="0" Grid.Row="0">
-
-                        <Border Style="{StaticResource BorderStyle}" Margin="5,5,5,5">
-                            <CheckBox x:Name="ChkAutoRetrieveData" VerticalContentAlignment="Center" Content="Auto Retrieve Data" Margin="1,0,0,0" Unchecked="ChkAutoRetrieveData_Changed" Checked="ChkAutoRetrieveData_Changed"/>
-                        </Border>
+                    <Border Style="{StaticResource BorderStyle}" Margin="5,2,2,5" Grid.Column="0" Grid.Row="0">
+                        <CheckBox x:Name="ChkAutoRetrieveData" VerticalContentAlignment="Center" Content="Auto Retrieve Data" Margin="2,0,0,0" Unchecked="ChkAutoRetrieveData_Changed" Checked="ChkAutoRetrieveData_Changed"/>
                     </Border>
-                    <Border Style="{StaticResource BorderStyle}" Margin="1,1,5,5" Grid.Column="1" Grid.Row="0">
-                        <Border Style="{StaticResource BorderStyle}" Margin="5,5,5,5" Grid.Column="1" Grid.Row="0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <RadioButton x:Name="RBtnOpenDota" Content="OpenDota" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="0" Checked="PreferredSite_Checked"  Grid.Column="0" Grid.Row="0"/>
-                                <RadioButton x:Name="RBtnDotaBuff" Content="DotaBuff"  DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="0"  Checked="PreferredSite_Checked" Grid.Column="1" Grid.Row="0"/>
-                            </Grid>
-                        </Border>
+                    <Border Style="{StaticResource BorderStyle}" Margin="2,2,5,5" Grid.Column="1" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <RadioButton x:Name="RBtnOpenDota" Content="OpenDota" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0" Checked="PreferredSite_Checked"  Grid.Column="0" Grid.Row="0"/>
+                            <RadioButton x:Name="RBtnDotaBuff" Content="DotaBuff"  DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0"  Checked="PreferredSite_Checked" Grid.Column="1" Grid.Row="0"/>
+                        </Grid>
                     </Border>
                 </Grid>
             </DockPanel>
