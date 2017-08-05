@@ -39,7 +39,7 @@ namespace DotaLass.API
             CTSource = new CancellationTokenSource();
 
             CancellationToken cancelToken = CTSource.Token;
-            
+
             RetrievalStarted?.Invoke(this, null);
 
             Task.Factory.StartNew(() =>
@@ -52,8 +52,10 @@ namespace DotaLass.API
                 if (!cancelToken.IsCancellationRequested)
                     Data.ConsumeData(playerID, playerData, recentMatches);
 
+            }, cancelToken).ContinueWith((t) =>
+            {
                 RetrievalCompleted?.Invoke(this, null);
-            }, cancelToken);
+            });
         }
 
         public void OpenProfile()

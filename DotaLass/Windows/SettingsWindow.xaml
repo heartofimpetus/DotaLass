@@ -7,7 +7,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="Setting" Width="390" ResizeMode="NoResize" WindowStyle="None" MouseDown="Window_MouseDown"
-        Background="Black" Height="275" ShowInTaskbar="False" Topmost="True">
+        Background="Black" Height="275" ShowInTaskbar="False" Topmost="True" SizeToContent="Height">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -94,7 +94,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
+                        <RowDefinition  Height="30"/>
                     </Grid.RowDefinitions>
 
                     <Border Style="{StaticResource BorderStyle}" Margin="5,2,2,5" Grid.Column="0" Grid.Row="0">
@@ -106,11 +106,8 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <RadioButton x:Name="RBtnOpenDota" Content="OpenDota" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0" Checked="PreferredSite_Checked"  Grid.Column="0" Grid.Row="0"/>
-                            <RadioButton x:Name="RBtnDotaBuff" Content="DotaBuff"  DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0"  Checked="PreferredSite_Checked" Grid.Column="1" Grid.Row="0"/>
+                            <RadioButton x:Name="RBtnOpenDota" Content="OpenDota" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0" Checked="PreferredSite_Checked"  Grid.Column="0"/>
+                            <RadioButton x:Name="RBtnDotaBuff" Content="DotaBuff"  DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0"  Checked="PreferredSite_Checked" Grid.Column="1"/>
                         </Grid>
                     </Border>
                 </Grid>

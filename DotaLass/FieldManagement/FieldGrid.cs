@@ -52,8 +52,8 @@ namespace DotaLass.FieldManagement
                 case "A": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageAssists), "A", 50));
                 case "XPM": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageXPM), "XPM", 75));
                 case "GPM": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageGPM), "GPM", 75));
-                case "DMG": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageTowerDamage), "DMG", 100));
-                case "BLD": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroHealing), "BLD", 75));
+                case "DMG": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroDamage), "DMG", 100));
+                case "BLD": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageTowerDamage), "BLD", 75));
                 case "HEAL": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroHealing), "HEAL", 75));
                 case "LH": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageLastHits), "LH", 75));
                 case "Recent Matches": return new FieldInfo(visible, new HeroIconsField(Window, "Recent Matches"));
