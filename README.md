@@ -1,12 +1,16 @@
 # DotaLass
-Dota 2 Stats Retrieval App
+![](http://i.imgur.com/6S79exo.png)
+---
+Dota 2 Personal Stats Assistant
 #### Features
 - Retrieve stats from all 10 players automatically when a match is found.
 - Calculates averages for the last 20~ games.
-- 14 different fields to choose from, see only the stats you care about.
+- 15 different fields to choose from, see only the stats you care about.
 - Quick links to player profiles and specific matches, straight to your preferred stats site (OpenDota/DotaBuff).
+- Custom Colour-Coded notes for players, remind yourself why someone was awesome, or why someone is muted.
 #### Fields
 - Profile
+- Notes
 - Solo MMR
 - Estimate MMR
 - Winrate
@@ -21,8 +25,8 @@ Dota 2 Stats Retrieval App
 - Last Hits
 - Recent Matches
 #### Customization
-Choose which fields you want displayed and in which order with the click of a button.
-![Settings](http://i.imgur.com/aGzECn6.png)
+Pick which fields you want to see, from only ranked games and from which maximum time frame.
+![Settings](http://i.imgur.com/16aGZIm.png)
 #### How to Use
 - Download the latest release [here](https://github.com/heartofimpetus/DotaLass/releases).
 - Unzip & run DotaLass.exe
@@ -32,6 +36,6 @@ Choose which fields you want displayed and in which order with the click of a bu
 No it is not, this app simply takes advantage of a fair to use file called `server_log.txt` in the Dota 2 game directory, aswell as the [OpenDota](https://www.opendota.com/) public api.
 There is no memory reading from the Dota 2 application and no risk of being banned.
 #### Screenshots
-![Stats](http://i.imgur.com/aD3c7N9.png)
-![Heroes](http://i.imgur.com/xZwYD6V.png)
-![Custom](http://i.imgur.com/QS2CnCI.png)
+![](http://i.imgur.com/0Mg1012.png)
+![](http://i.imgur.com/xZwYD6V.png)
+![](http://i.imgur.com/DZmayBt.png)
