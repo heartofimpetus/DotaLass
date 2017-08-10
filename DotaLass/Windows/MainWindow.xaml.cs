@@ -73,7 +73,9 @@ namespace DotaLass.Windows
                         if (LastLobby != tempLobby)
                         {
                             watcher.EnableRaisingEvents = false;
+
                             RetrieveData();
+                            AutoSizeWindow();
 
                             LastLobby = tempLobby;
                         }
@@ -121,13 +123,16 @@ namespace DotaLass.Windows
 
         public void AutoSizeWindow()
         {
-            UIElement content = this.Content as UIElement;
-            
-            content.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            
-            this.MaxWidth = content.DesiredSize.Width;
-            this.MinHeight = content.DesiredSize.Height;
-            this.MaxHeight = content.DesiredSize.Height;
+            this.Dispatcher.Invoke(() =>
+            {
+                UIElement content = this.Content as UIElement;
+
+                content.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+
+                this.MaxWidth = content.DesiredSize.Width;
+                this.MinHeight = content.DesiredSize.Height;
+                this.MaxHeight = content.DesiredSize.Height;
+            });
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
