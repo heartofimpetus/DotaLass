@@ -10,13 +10,25 @@ namespace DotaLass.API
     public class Settings
     {
         public bool AutoRetrievePlayerData { get; set; }
-        
+
         public LinkSite PreferredSite { get; set; }
+
+        public DateLimit RecentMatchesDateLimit { get; set; }
+
+        public bool RankedMatchesOnly { get; set; }
 
         public enum LinkSite
         {
             OpenDota,
             DotaBuff
+        }
+
+        public enum DateLimit
+        {
+            Days30,
+            Days60,
+            Days90,
+            AllTime
         }
 
         [JsonIgnore]
@@ -31,6 +43,25 @@ namespace DotaLass.API
                     case LinkSite.DotaBuff: return "https://www.dotabuff.com";
                 }
             }
+        }
+
+        public int GetDaysLimit()
+        {
+            switch (RecentMatchesDateLimit)
+            {
+                case DateLimit.Days30: return 30;
+                case DateLimit.Days60: return 60;
+                case DateLimit.Days90: return 90;
+                case DateLimit.AllTime:
+                default: return -1;
+            }
+        }
+        public int GetLobbyType()
+        {
+            if (RankedMatchesOnly)
+                return 7;
+            else
+                return -1;
         }
 
         public List<Tuple<string, bool>> FieldSettings { get; set; }

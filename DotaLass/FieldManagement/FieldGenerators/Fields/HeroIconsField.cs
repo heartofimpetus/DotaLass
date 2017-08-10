@@ -52,6 +52,10 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
                                     else
                                         image.Source = HeroIcons.HeroLossIcons[playerDisplay.Data.RecentMatches[index].hero_id - 1];
                                 }
+                                else
+                                {
+                                    image.Source = HeroIcons.BlankHeroIcon;
+                                }
                             }
                         });
                     }

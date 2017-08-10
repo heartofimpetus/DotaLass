@@ -14,7 +14,7 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
 {
     public class ProfileLinkField : FieldBase
     {
-        public ProfileLinkField(Window window) : base(window, nameof(PlayerDisplay.DisplayData.ID), "Profile", double.NaN)
+        public ProfileLinkField(Window window, string fieldName) : base(window, nameof(PlayerDisplay.DisplayData.ID), fieldName, double.NaN)
         {
         }
 

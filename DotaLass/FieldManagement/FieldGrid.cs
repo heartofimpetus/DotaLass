@@ -42,21 +42,21 @@ namespace DotaLass.FieldManagement
         {
             switch (key)
             {
-                case "Profile": return new FieldInfo(visible, new ProfileLinkField(Window));
-                case "Notes": return new FieldInfo(visible, new NotesField(Window));
-                case "Solo MMR": return new FieldInfo(visible, new StringField(Window, nameof(PlayerDisplay.DisplayData.SoloMMR), "Solo MMR", 120));
-                case "Estimate MMR": return new FieldInfo(visible, new StringField(Window, nameof(PlayerDisplay.DisplayData.EstimateMMR), "Estimate MMR", 120));
-                case "Winrate": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.Winrate), "Winrate", 100, "0.#%"));
-                case "K": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageKills), "K", 50));
-                case "D": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageDeaths), "D", 50));
-                case "A": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageAssists), "A", 50));
-                case "XPM": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageXPM), "XPM", 75));
-                case "GPM": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageGPM), "GPM", 75));
-                case "DMG": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroDamage), "DMG", 100));
-                case "BLD": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageTowerDamage), "BLD", 75));
-                case "HEAL": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroHealing), "HEAL", 75));
-                case "LH": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageLastHits), "LH", 75));
-                case "Recent Matches": return new FieldInfo(visible, new HeroIconsField(Window, "Recent Matches"));
+                case "Profile": return new FieldInfo(visible, new ProfileLinkField(Window, key));
+                case "Notes": return new FieldInfo(visible, new NotesField(Window, key));
+                case "Solo MMR": return new FieldInfo(visible, new StringField(Window, nameof(PlayerDisplay.DisplayData.SoloMMR), key, 120));
+                case "Estimate MMR": return new FieldInfo(visible, new StringField(Window, nameof(PlayerDisplay.DisplayData.EstimateMMR), key, 120));
+                case "Winrate": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.Winrate), key, 100, "0.#%"));
+                case "K": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageKills), key, 50));
+                case "D": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageDeaths), key, 50));
+                case "A": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageAssists), key, 50));
+                case "XPM": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageXPM), key, 75));
+                case "GPM": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageGPM), key, 75));
+                case "DMG": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroDamage), key, 100));
+                case "BLD": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageTowerDamage), key, 75));
+                case "HEAL": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageHeroHealing), key, 75));
+                case "LH": return new FieldInfo(visible, new FloatField(Window, nameof(PlayerDisplay.DisplayData.AverageLastHits), key, 75));
+                case "Recent Matches": return new FieldInfo(visible, new HeroIconsField(Window, key));
                 default: return null;
             }
         }

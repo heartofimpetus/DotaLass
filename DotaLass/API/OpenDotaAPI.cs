@@ -21,9 +21,18 @@ namespace DotaLass.API
             else
                 return null;
         }
-        public static Match[] GetPlayerMatches(string playerID, int limit)
+
+        public static Match[] GetPlayerMatches(string playerID, int limit, int days, int lobbyType)
         {
-            string result = RequestHandler.GET($@"https://api.opendota.com/api/players/{playerID}/matches?limit={limit}&project[]=hero_id&project[]=kills&project[]=deaths&project[]=assists&project[]=xp_per_min&project[]=gold_per_min&project[]=hero_damage&project[]=tower_damage&project[]=hero_healing&project[]=last_hits");
+            string requestString = $@"https://api.opendota.com/api/players/{playerID}/matches?limit={limit}";
+
+            if (days > 0)
+                requestString += $@"&date={days}";
+            if (lobbyType > 0)
+                requestString += $@"&lobby_type={lobbyType}";
+
+            requestString += $@"&project[]=hero_id&project[]=kills&project[]=deaths&project[]=assists&project[]=xp_per_min&project[]=gold_per_min&project[]=hero_damage&project[]=tower_damage&project[]=hero_healing&project[]=last_hits";
+            string result = RequestHandler.GET(requestString);
 
             if (result != null)
                 return JsonConvert.DeserializeObject<Match[]>(result);

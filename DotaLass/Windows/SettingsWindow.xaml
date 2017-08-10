@@ -7,7 +7,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="Setting" Width="390" ResizeMode="NoResize" WindowStyle="None" MouseDown="Window_MouseDown"
-        Background="Black" Height="275" ShowInTaskbar="False" Topmost="True" SizeToContent="Height">
+        Background="Black" Height="350" ShowInTaskbar="False" Topmost="True" SizeToContent="Height">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -95,6 +95,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition  Height="30"/>
+                        <RowDefinition  Height="30"/>
                     </Grid.RowDefinitions>
 
                     <Border Style="{StaticResource BorderStyle}" Margin="5,2,2,5" Grid.Column="0" Grid.Row="0">
@@ -110,6 +111,16 @@
                             <RadioButton x:Name="RBtnDotaBuff" Content="DotaBuff"  DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" GroupName="PreferredSite" Margin="1,0,0,0"  Checked="PreferredSite_Checked" Grid.Column="1"/>
                         </Grid>
                     </Border>
+                    
+                    <Border Style="{StaticResource BorderStyle}" Margin="5,2,2,5" Grid.Column="0" Grid.Row="1">
+                        <CheckBox x:Name="ChkRankedOnly" VerticalContentAlignment="Center" Content="Ranked Matches Only" Margin="2,0,0,0" Unchecked="ChkRankedOnly_Changed" Checked="ChkRankedOnly_Changed"/>
+                    </Border>
+                    <ComboBox x:Name="CmbDateLimit" Margin="2,2,5,5" Grid.Column="1" Grid.Row="1" SelectionChanged="CmbDateLimit_SelectionChanged">
+                        <ComboBoxItem>Last 30 Days</ComboBoxItem>
+                        <ComboBoxItem>Last 60 Days</ComboBoxItem>
+                        <ComboBoxItem>Last 90 Days</ComboBoxItem>
+                        <ComboBoxItem>All Time</ComboBoxItem>
+                    </ComboBox>
                 </Grid>
             </DockPanel>
         </Grid>

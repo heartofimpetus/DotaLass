@@ -20,9 +20,9 @@ namespace DotaLass.API.Outputs
         public int assists { get; set; }
         public int xp_per_min { get; set; }
         public int gold_per_min { get; set; }
-        public int hero_damage { get; set; }
-        public int tower_damage { get; set; }
-        public int hero_healing { get; set; }
+        public int? hero_damage { get; set; }
+        public int? tower_damage { get; set; }
+        public int? hero_healing { get; set; }
         public int last_hits { get; set; }
 
         public bool Won

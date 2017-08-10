@@ -47,7 +47,7 @@ namespace DotaLass.API
                 if (!cancelToken.IsCancellationRequested)
                     playerData = OpenDotaAPI.GetPlayerData(playerID);
                 if (!cancelToken.IsCancellationRequested)
-                    recentMatches = OpenDotaAPI.GetPlayerMatches(playerID, 20);
+                    recentMatches = OpenDotaAPI.GetPlayerMatches(playerID, 20, Settings.Instance.GetDaysLimit(), Settings.Instance.GetLobbyType());
 
                 if (!cancelToken.IsCancellationRequested)
                     Data.ConsumeData(playerID, playerData, recentMatches);
@@ -149,9 +149,9 @@ namespace DotaLass.API
                         totalAssists += match.assists;
                         totalXPM += match.xp_per_min;
                         totalGPM += match.gold_per_min;
-                        totalHeroDamage += match.hero_damage;
-                        totalTowerDamage += match.tower_damage;
-                        totalHeroHealing += match.hero_healing;
+                        totalHeroDamage += match.hero_damage.GetValueOrDefault(0);
+                        totalTowerDamage += match.tower_damage.GetValueOrDefault(0);
+                        totalHeroHealing += match.hero_healing.GetValueOrDefault(0);
                         totalLastHits += match.last_hits;
                     }
 

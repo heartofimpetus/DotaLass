@@ -15,7 +15,7 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
 {
     public class NotesField : FieldBase
     {
-        public NotesField(Window window) : base(window, nameof(PlayerDisplay.DisplayData.ID), "Notes", double.NaN)
+        public NotesField(Window window, string fieldName) : base(window, nameof(PlayerDisplay.DisplayData.ID), fieldName, double.NaN)
         {
         }
 

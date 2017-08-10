@@ -1,6 +1,8 @@
 {
   "AutoRetrievePlayerData": true,
   "PreferredSite": 0,
+  "RecentMatchesDateLimit": 3,
+  "RankedMatchesOnly": false,
   "FieldSettings": [
     {
       "Item1": "Profile",

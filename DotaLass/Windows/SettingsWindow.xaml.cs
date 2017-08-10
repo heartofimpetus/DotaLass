@@ -34,6 +34,8 @@ namespace DotaLass.Windows
             PopulateListBox();
 
             ChkAutoRetrieveData.IsChecked = Settings.Instance.AutoRetrievePlayerData;
+            ChkRankedOnly.IsChecked = Settings.Instance.RankedMatchesOnly;
+            CmbDateLimit.SelectedIndex = (int)Settings.Instance.RecentMatchesDateLimit;
 
             switch (Settings.Instance.PreferredSite)
             {
@@ -193,6 +195,19 @@ namespace DotaLass.Windows
                 Settings.Instance.AutoRetrievePlayerData = ChkAutoRetrieveData.IsChecked.Value;
             else
                 Settings.Instance.AutoRetrievePlayerData = false;
+        }
+
+        private void ChkRankedOnly_Changed(object sender, RoutedEventArgs e)
+        {
+            if (ChkRankedOnly.IsChecked.HasValue)
+                Settings.Instance.RankedMatchesOnly = ChkRankedOnly.IsChecked.Value;
+            else
+                Settings.Instance.RankedMatchesOnly = false;
+        }
+
+        private void CmbDateLimit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Settings.Instance.RecentMatchesDateLimit = (Settings.DateLimit)CmbDateLimit.SelectedIndex;
         }
     }
 }
