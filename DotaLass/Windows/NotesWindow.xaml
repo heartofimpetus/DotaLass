@@ -27,12 +27,12 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <Border Style="{StaticResource BorderStyle}" DockPanel.Dock="Top" Height="30" Margin="5">
+                <Border Style="{StaticResource BorderStyle}" DockPanel.Dock="Left" Width="30" Margin="5,5,2,5">
                     <Grid x:Name="GridColour" >
-                        <Border x:Name="BorderSelected" Style="{StaticResource BorderStyle}" Margin="1" BorderBrush="White"/>
+                        <Border x:Name="BorderSelected" Style="{StaticResource BorderStyle}" Margin="2" BorderThickness="1.5" BorderBrush="White" CornerRadius="3"/>
                     </Grid>
                 </Border>
-                <TextBox x:Name="TxtNotes" DockPanel.Dock="Top" Background="Black" BorderBrush="{StaticResource BorderBrush}" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True"/>
+                <TextBox x:Name="TxtNotes" DockPanel.Dock="Top" Background="Black" BorderBrush="{StaticResource BorderBrush}" Margin="2,5,5,5" ScrollViewer.VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True"/>
             </DockPanel>
         </Grid>
     </Border>

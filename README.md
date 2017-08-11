@@ -37,6 +37,6 @@ Pick which fields you want to see, from only ranked games and from which maximum
 No it is not, this app simply takes advantage of a fair to use file called `server_log.txt` in the Dota 2 game directory, aswell as the [OpenDota](https://www.opendota.com/) public api.
 There is no memory reading from the Dota 2 application and no risk of being banned.
 #### Screenshots
-![](http://i.imgur.com/xZwYD6V.png)
 ![](http://i.imgur.com/aBVSTho.png)
-![](http://i.imgur.com/DZmayBt.png)
+![](http://i.imgur.com/nwHmt6L.png)
+![](http://i.imgur.com/nrvllTQ.png)

@@ -38,16 +38,16 @@ namespace DotaLass.Windows
 
         private void InitializeColours(ImageAwesome sourceImage)
         {
-            BorderSelected.SetValue(Grid.ColumnProperty, Note.ColourIndex);
+            BorderSelected.SetValue(Grid.RowProperty, Note.ColourIndex);
 
             for (int i = 0; i < PlayerNotes.Colors.Length; i++)
             {
                 int index = i;
 
-                GridColour.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                GridColour.RowDefinitions.Add(new RowDefinition());
 
                 Rectangle rect = new Rectangle() { Fill = new SolidColorBrush(PlayerNotes.Colors[i]), Margin = new Thickness(5) };
-                rect.SetValue(Grid.ColumnProperty, i);
+                rect.SetValue(Grid.RowProperty, i);
 
                 GridColour.Children.Add(rect);
 
@@ -55,7 +55,7 @@ namespace DotaLass.Windows
                 {
                     if (a.ChangedButton == MouseButton.Left)
                     {
-                        BorderSelected.SetValue(Grid.ColumnProperty, index);
+                        BorderSelected.SetValue(Grid.RowProperty, index);
                         Note.ColourIndex = index;
 
                         sourceImage.Foreground = new SolidColorBrush(Note.Colour);
@@ -98,7 +98,10 @@ namespace DotaLass.Windows
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
+            {
                 this.DragMove();
+                Keyboard.ClearFocus();
+            }
         }
     }
 }
