@@ -12,44 +12,87 @@ namespace DotaLass.API
     {
         private const int HeroIconCount = 114;
 
-        private static BitmapImage[] _HeroWinIcons;
-        public static BitmapImage[] HeroWinIcons
+        private static Dictionary<int, BitmapImage> _HeroWinIcons;
+        private static Dictionary<int, BitmapImage> HeroWinIcons
         {
             get
             {
-                Uri[] imageUris = new Uri[HeroIconCount];
-
-                for (int i = 0; i < imageUris.Length; i++)
+                if (_HeroWinIcons == null)
                 {
-                    string iconName = (i + 1).ToString().PadLeft(3, '0');
-                    imageUris[i] = new Uri($"/Resources/Images/HeroIcons/Win/{iconName}.png", UriKind.Relative);
-                }
+                    _HeroWinIcons = new Dictionary<int, BitmapImage>();
 
-                _HeroWinIcons = imageUris.Select(x => new BitmapImage(x)).ToArray();
+                    var dir = Directory.GetCurrentDirectory() + "/Resources/Images/HeroIcons/Win/";
+
+                    var files = Directory.GetFiles(dir, "*.png", SearchOption.AllDirectories);
+
+                    foreach (var item in files)
+                    {
+                        var fileName = Path.GetFileNameWithoutExtension(item);
+
+                        int id;
+                        if (int.TryParse(fileName, out id))
+                        {
+                            _HeroWinIcons[id] = new BitmapImage(new Uri(item));
+                        }
+                    }
+                }
 
                 return _HeroWinIcons;
             }
         }
 
-        private static BitmapImage[] _HeroLossIcons;
-        public static BitmapImage[] HeroLossIcons
+        public static BitmapImage GetHeroWinIcon(int id)
+        {
+            BitmapImage output;
+            if (HeroWinIcons.TryGetValue(id, out output))
+            {
+                return output;
+            }
+            else
+            {
+                return BlankHeroIcon;
+            }
+        }
+
+        private static Dictionary<int, BitmapImage> _HeroLossIcons;
+        private static Dictionary<int, BitmapImage> HeroLossIcons
         {
             get
             {
                 if (_HeroLossIcons == null)
                 {
-                    Uri[] imageUris = new Uri[HeroIconCount];
+                    _HeroLossIcons = new Dictionary<int, BitmapImage>();
 
-                    for (int i = 0; i < imageUris.Length; i++)
+                    var dir = Directory.GetCurrentDirectory() + "/Resources/Images/HeroIcons/Loss/";
+
+                    var files = Directory.GetFiles(dir, "*.png", SearchOption.AllDirectories);
+
+                    foreach (var item in files)
                     {
-                        string iconName = (i + 1).ToString().PadLeft(3, '0');
-                        imageUris[i] = new Uri($"/Resources/Images/HeroIcons/Loss/{iconName}.png", UriKind.Relative);
-                    }
+                        var fileName = Path.GetFileNameWithoutExtension(item);
 
-                    _HeroLossIcons = imageUris.Select(x => new BitmapImage(x)).ToArray();
+                        int id;
+                        if (int.TryParse(fileName, out id))
+                        {
+                            _HeroLossIcons[id] = new BitmapImage(new Uri(item));
+                        }
+                    }
                 }
 
                 return _HeroLossIcons;
+            }
+        }
+
+        public static BitmapImage GetHeroLossIcon(int id)
+        {
+            BitmapImage output;
+            if (HeroLossIcons.TryGetValue(id, out output))
+            {
+                return output;
+            }
+            else
+            {
+                return BlankHeroIcon;
             }
         }
 

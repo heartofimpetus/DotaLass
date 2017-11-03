@@ -48,9 +48,9 @@ namespace DotaLass.FieldManagement.FieldGenerators.Fields
                                 if (index < playerDisplay.Data.RecentMatches.Length)
                                 {
                                     if (playerDisplay.Data.RecentMatches[index].Won)
-                                        image.Source = HeroIcons.HeroWinIcons[playerDisplay.Data.RecentMatches[index].hero_id - 1];
+                                        image.Source = HeroIcons.GetHeroWinIcon(playerDisplay.Data.RecentMatches[index].hero_id);
                                     else
-                                        image.Source = HeroIcons.HeroLossIcons[playerDisplay.Data.RecentMatches[index].hero_id - 1];
+                                        image.Source = HeroIcons.GetHeroLossIcon(playerDisplay.Data.RecentMatches[index].hero_id);
                                 }
                                 else
                                 {
